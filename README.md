@@ -120,10 +120,10 @@ All experiments use CIFAR-10 under 35% PMD noise as the base setting.
 Test model performance with different batch sizes:
 ```bash
 # Batch size = 128
-python train_CIFAR.py --device cuda:0 --noise_type cifar10-1-0.35 --fp_encoder SimCLR --nepoch 31 --warmup_epochs 5 --batch_size 128
+!python train_CIFAR.py --device cuda:0 --noise_type cifar10-1-0.35 --fp_encoder SimCLR --nepoch 31 --warmup_epochs 5 --batch_size 128
 
 # Batch size = 256
-python train_CIFAR.py --device cuda:0 --noise_type cifar10-1-0.35 --fp_encoder SimCLR --nepoch 31 --warmup_epochs 5 --batch_size 256
+!python train_CIFAR.py --device cuda:0 --noise_type cifar10-1-0.35 --fp_encoder SimCLR --nepoch 31 --warmup_epochs 5 --batch_size 256
 ```
 ### 6.2 Modified Learning Rate
 1. Modify train_CIFAR.py:
@@ -150,10 +150,10 @@ adjust_learning_rate(optimizer, i / len(train_loader) + epoch, warmup_epochs=war
 Test different numbers of neighbors:
 ```bash
 # k = 8 neighbors
-python train_CIFAR.py --device cuda:0 --noise_type cifar10-1-0.35 --fp_encoder SimCLR --nepoch 31 --warmup_epochs 5 --k 8
+!python train_CIFAR.py --device cuda:0 --noise_type cifar10-1-0.35 --fp_encoder SimCLR --nepoch 31 --warmup_epochs 5 --k 8
 
 # k = 12 neighbors
-python train_CIFAR.py --device cuda:0 --noise_type cifar10-1-0.35 --fp_encoder SimCLR --nepoch 31 --warmup_epochs 5 --k 12
+!python train_CIFAR.py --device cuda:0 --noise_type cifar10-1-0.35 --fp_encoder SimCLR --nepoch 31 --warmup_epochs 5 --k 12
 ```
 
 ### 6.4 Dynamic KNN weighting
@@ -216,11 +216,11 @@ y_labels_batch, sample_weight = sample_knn_labels_dynamic(fp_embd, y_batch.to(de
 !python train_CIFAR.py --device cuda:0 --noise_type cifar10-1-0.35 --fp_encoder SimCLR --nepoch 31 --warmup_epochs 5
 ```
 ## 7. Results and Findings
-### 7.1Replication Results:
+### 7.1 Replication Results:
 - Successfully replicated on both CIFAR-10 and CIFAR-100 datasets
 - Results within reasonable range of original paper despite reduced training epochs
 
-### 7.2Modification Effects:
+### 7.2 Modification Effects:
 - Batch size: Larger batch size (256) showed more stable training
 - KNN settings: k=10 provided best balance of performance and efficiency
 - Learning rate: 0.001 worked best with my training setup
